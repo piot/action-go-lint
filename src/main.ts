@@ -8,12 +8,12 @@ async function getDependencies(): Promise<number> {
 
 async function install() {
     core.info("Installing golangci-lint")
-    return exec.exec('sh golangci-lint-installer.sh v1.19.1')
+    return exec.exec('sh golangci-lint-installer.sh v1.20.0')
 }
 
 async function lint() {
     core.info("Linting")
-    return exec.exec('bin/golangci-lint run --enable-all -D lll -D maligned')
+    return exec.exec('bin/golangci-lint run -v --enable-all --disable lll --disable maligned --color always')
 }
 
 async function run() {
