@@ -13,7 +13,7 @@ async function install() {
 
 async function lint() {
     core.info("Linting")
-    return exec.exec('bin/golangci-lint run -v --enable-all --disable lll --disable maligned --color always')
+    return exec.exec('bin/golangci-lint run -v --enable-all --disable lll --disable maligned --color always --exclude-use-default=0 -e "- Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*printf?|os\.(Un)?Setenv). is not checked"')
 }
 
 async function run() {
