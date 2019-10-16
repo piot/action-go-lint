@@ -8,7 +8,7 @@ async function getDependencies(): Promise<number> {
 
 async function install() {
     core.info("Installing golangci-lint")
-    return exec.exec('sh golangci-lint-installer.sh v1.20.0')
+    return exec.exec('sh golangci-lint-installer.sh v1.21.0')
 }
 
 async function lint() {
