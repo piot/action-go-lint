@@ -8,12 +8,12 @@ async function getDependencies(): Promise<number> {
 
 async function install() {
     core.info("Installing golangci-lint")
-    return exec.exec('sh golangci-lint-installer.sh v1.21.0')
+    return exec.exec('sh golangci-lint-installer.sh v1.26.0')
 }
 
 async function lint() {
     core.info("Linting")
-    return exec.exec('bin/golangci-lint run -v --enable-all --disable maligned --color always --exclude-use-default=0 -e "- Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*printf?|os\.(Un)?Setenv). is not checked"')
+    return exec.exec('bin/golangci-lint run -v --enable-all --disable maligned --disable goerr113 --color always --exclude-use-default=0 -e "- Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*printf?|os\.(Un)?Setenv). is not checked"')
 }
 
 async function run() {
